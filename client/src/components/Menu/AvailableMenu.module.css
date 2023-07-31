@@ -1,0 +1,24 @@
+.menuu {
+  max-width: 70rem;
+  width: 90%;
+  margin: 1rem auto;
+  animation: meals-appear 1s ease-out forwards;
+}
+
+.menuu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes meals-appear {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

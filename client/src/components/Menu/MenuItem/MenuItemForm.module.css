@@ -1,0 +1,25 @@
+.form {
+  text-align: right;
+}
+
+.form button {
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #641e03;
+  border: 1px solid #641e03;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.form button:hover,
+.form button:active {
+  background-color: #541300;
+  border-color: #541300;
+}
+
+.form label {
+  font-size: 12px;
+}
