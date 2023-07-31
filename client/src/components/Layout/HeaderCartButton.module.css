@@ -2,43 +2,47 @@
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color: #541300;
+  background-color: white;
   color: white;
   padding: 0.55rem 0.3rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 25px;
   font-weight: bold;
 }
+.img {
+  width: 38px;
+  height: 30px;
+}
 
-.button:hover,
+/* .button:hover,
 .button:active {
   background-color: #420100;
   color: white;
-}
+} */
 
 .icon {
-  width: 1.35rem;
+  width: 2.35rem;
   height: 1.35rem;
   margin-right: 0.5rem;
 }
 
 .badge {
-  background-color: white;
-  color: #541300;
+  background-color: #541300;
+  color: white;
   padding: 0.25rem 0.7rem;
-  border-radius: 20px;
-  margin-left: 0.7rem;
+  border-radius: 10px;
+  margin-top: 0.7rem;
   font-weight: bold;
 }
-
+/* 
 .button:hover .badge,
 .button:active .badge {
   background-color: white;
   color: #420100;
-}
+} */
 
-.bump {
+/* .bump {
   animation: bump 300ms ease-out;
-}
+} */

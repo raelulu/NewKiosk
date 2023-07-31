@@ -1,6 +1,5 @@
-import React from 'react';
+import React from "react";
 
-//장바구니 전용 아이콘
 const CartIcon = () => {
   return (
     <svg
