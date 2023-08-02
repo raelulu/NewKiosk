@@ -6,6 +6,7 @@ import shoppingCart from "../../assets/shoppingCart.png";
 import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../store/cart-context";
 import classes from "./HeaderCartButton.module.css";
+import { CiShoppingCart } from "react-icons/ci";
 
 const HeaderCartButton = (props) => {
   const cartCtx = useContext(CartContext);
@@ -16,10 +17,7 @@ const HeaderCartButton = (props) => {
 
   return (
     <button className={classes.button} onClick={props.onClick}>
-      <span className={classes.icon}>
-        <img className={classes.img} src={shoppingCart} alt="cartIcon"></img>
-        {/* <CartIcon /> */}
-      </span>
+      <CiShoppingCart className={classes.icon} />
       <span className={classes.badge}>{numberOfCartItems}</span>
     </button>
   );
