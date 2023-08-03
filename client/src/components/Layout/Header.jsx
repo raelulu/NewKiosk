@@ -10,6 +10,7 @@ const Header = (props) => {
     <>
       <header className={classes.header}>
         <img className={classes.img} src={CoffeeLogo} alt="logo of cafe" />
+        <h1>COFFEE PLANT</h1>
         <HeaderCartButton onClick={props.onShowCart} />
       </header>
       <div className={classes["main-image"]}>
