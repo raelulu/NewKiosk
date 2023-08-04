@@ -1,9 +1,5 @@
 import React from "react";
 import { useContext } from "react";
-
-import shoppingCart from "../../assets/shoppingCart.png";
-
-import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../store/cart-context";
 import classes from "./HeaderCartButton.module.css";
 import { CiShoppingCart } from "react-icons/ci";

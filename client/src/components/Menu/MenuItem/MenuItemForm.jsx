@@ -1,10 +1,8 @@
-import React from 'react';
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 
-import Input from '../../UI/Input';
-import classes from './MenuItemForm.module.css';
+import Input from "../../UI/Input";
+import classes from "./MenuItemForm.module.css";
 
-// MenuItemForm 주문
 const MenuItemForm = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
@@ -35,15 +33,14 @@ const MenuItemForm = (props) => {
     <form className={classes.form} onSubmit={submitHandler}>
       <Input
         ref={amountInputRef}
-        //ref를 통해 인풋에 접근가능
         label="수량"
         input={{
-          id: 'amount',
-          type: 'number',
-          min: '1',
-          max: '5',
-          step: '1',
-          defaultValue: '1',
+          id: "amount" + props.id,
+          type: "number",
+          min: "1",
+          max: "20",
+          step: "1",
+          defaultValue: "1",
         }}
       />
       <button type="submit">주문하기</button>
