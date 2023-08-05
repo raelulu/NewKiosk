@@ -1,11 +1,10 @@
-import React from 'react';
-import classes from './CartItem.module.css';
+import React from "react";
+import classes from "./CartItem.module.css";
 
 const CartItem = (props) => {
-  // console.log('modal', props);
   const price = `${props.price}`;
   return (
-    <li className={classes['cart-item']}>
+    <li className={classes["cart-item"]}>
       <div>
         <h2>{props.name}</h2>
         <div className={classes.summary}>

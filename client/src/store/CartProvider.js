@@ -1,4 +1,4 @@
-import { useReducer } from "react"; //state를 관리하기 위해 useReducer를 사용함
+import { useReducer } from "react";
 import CartContext from "./cart-context";
 
 const defaultCartState = {
@@ -11,20 +11,21 @@ const cartReducer = (state, action) => {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
 
-    const existingCartItemIndex = state.items.findIndex((item) => item.id === action.item.id);
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
     const existingCartItem = state.items[existingCartItemIndex];
     let updatedItems;
 
-    if (existingCartItem){
-     const updatedItem = {
+    if (existingCartItem) {
+      const updatedItem = {
         ...existingCartItem,
-        amount: existingCartItem.amount + action.item.amount
+        amount: existingCartItem.amount + action.item.amount,
       };
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
     } else {
       updatedItems = state.items.concat(action.item);
-      //concat은 새배열을 반환 즉, 얻게될 action.item을 반환 
     }
 
     return {
@@ -32,25 +33,27 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
-    if (action.type === "REMOVE") {
-      const existingCartItemIndex = state.items.findIndex((item) => item.id === action.id);
-      const existingItem = state.items[existingCartItemIndex];
-      const updatedTotalAmount = state.totalAmount - existingItem.price;
-      let updatedItems;
-      if (existingItem.amount === 1){
-        updatedItems = state.items.filter(item => item.id !== action.id );
-      } else {
-        const updatedItem = { ...existingItem, amount: existingItem.amount -1};
-        updatedItems = [...state.items];
-        updatedItems[existingCartItemIndex] = updatedItem;
-      }
+  if (action.type === "REMOVE") {
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+    const existingItem = state.items[existingCartItemIndex];
+    const updatedTotalAmount = state.totalAmount - existingItem.price;
+    let updatedItems;
+    if (existingItem.amount === 1) {
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    } else {
+      const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    }
 
-      return {
-        items: updatedItems,
-        totalAmount: updatedTotalAmount,
-      };
-    }   
-  
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
   return defaultCartState;
 };
 
@@ -63,7 +66,6 @@ const CartProvider = (props) => {
   const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
-  // 위 함수가 호출될때마다 장바구니에 추가해야할 항목을 얻음
   const removeItemFromCartHandler = (id) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };

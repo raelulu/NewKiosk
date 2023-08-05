@@ -11,21 +11,16 @@ const MenuItemForm = (props) => {
     event.preventDefault();
 
     const enteredAmount = amountInputRef.current.value;
-    //위는 ref에 저장된 인풋요소를 가리킬것
-    //모든 인풋요소는 기본적으로 value속성을 가짐
     const enteredAmountNumber = +enteredAmount;
-    //항상 문자열. 그래서 숫자로 변환
 
     if (
-      //유효성검사 (trim은공백삭제)
       enteredAmount.trim().length === 0 ||
       enteredAmountNumber < 1 ||
-      enteredAmountNumber > 5
+      enteredAmountNumber > 20
     ) {
       setAmountIsValid(false);
       return;
     }
-
     props.onAddToCart(enteredAmountNumber);
   };
 
@@ -44,7 +39,7 @@ const MenuItemForm = (props) => {
         }}
       />
       <button type="submit">주문하기</button>
-      {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
+      {!amountIsValid && <p>Please enter a valid amount (1-20).</p>}
     </form>
   );
 };
