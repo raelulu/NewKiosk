@@ -1,21 +1,18 @@
 import React from "react";
-import { Fragment } from "react";
 import HeaderCartButton from "./HeaderCartButton";
 import CoffeeLogo from "../../assets/CoffeeLogo.png";
-import back from "../../assets/back.jpg";
 import classes from "./Header.module.css";
+import GlobalStyle from "../UI/GlobalStyle";
 
 const Header = (props) => {
   return (
     <>
+      <GlobalStyle />
       <header className={classes.header}>
         <img className={classes.img} src={CoffeeLogo} alt="logo of cafe" />
         <h1>COFFEE PLANT</h1>
         <HeaderCartButton onClick={props.onShowCart} />
       </header>
-      <div className={classes["main-image"]}>
-        <img src={back} alt="backgroundImg" />
-      </div>
     </>
   );
 };

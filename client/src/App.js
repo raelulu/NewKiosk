@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/Layout/Header";
 import "./App.css";
-import Coffee from "./components/Menu/Coffee";
+import Main from "./components/Layout/Main";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
 
@@ -21,7 +21,7 @@ function App() {
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <main>
-        <Coffee />
+        <Main />
       </main>
     </CartProvider>
   );
