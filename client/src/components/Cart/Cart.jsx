@@ -36,8 +36,6 @@ const Cart = (props) => {
     </ul>
   );
 
-  let [pay, setPay] = useState(false);
-
   return (
     <Modal onClose={props.onClose}>
       {cartItems}
@@ -49,17 +47,7 @@ const Cart = (props) => {
         <button className={classes["button--alt"]} onClick={props.onClose}>
           닫기
         </button>
-        {hasItems && (
-          <button
-            className={classes.button}
-            onClick={() => {
-              setPay(!pay);
-            }}
-          >
-            주문
-          </button>
-        )}
-        {pay && <PayRequest />}
+        {hasItems && <PayRequest />}
       </div>
     </Modal>
   );

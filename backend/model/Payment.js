@@ -1,6 +1,6 @@
 const Payment = (Sequelize, DataTypes) => {
   return Sequelize.define(
-    'payment',
+    "payment",
     {
       payment_id: {
         type: DataTypes.INTEGER,
@@ -18,7 +18,7 @@ const Payment = (Sequelize, DataTypes) => {
       },
     },
     {
-      tableName: 'payment',
+      tableName: "payment",
       freezeTableName: true,
       timestamps: false,
     }

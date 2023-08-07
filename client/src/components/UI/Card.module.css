@@ -1,31 +1,7 @@
 .card {
   padding: 1rem;
-  margin-top: 20%;
+  margin-top: 15%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   border-radius: 14px;
   background-color: white;
 }
-
-/* @media (min-width: 400px) {
-  .card {
-    margin-top: 300%;
-  }
-}
-
-@media (min-width: 768px) {
-  .card {
-    margin-top: 90%;
-  }
-}
-
-@media (min-width: 1000px) {
-  .card {
-    margin-top: 30%;
-  }
-}
-
-@media (min-width: 1500px) {
-  .card {
-    margin-top: -170%;
-  }
-} */

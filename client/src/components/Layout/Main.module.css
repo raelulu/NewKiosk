@@ -2,10 +2,3 @@
   background-image: url("../../assets/back.jpg");
   background-size: cover;
 }
-
-/* @media (min-width: 1200px) {
-  .background-image {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-} */
