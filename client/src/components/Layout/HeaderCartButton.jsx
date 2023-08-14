@@ -14,7 +14,9 @@ const HeaderCartButton = (props) => {
   return (
     <button className={classes.button} onClick={props.onClick}>
       <CiShoppingCart className={classes.icon} />
-      <span className={classes.badge}>{numberOfCartItems}</span>
+      {numberOfCartItems > 0 && (
+        <span className={classes.badge}>{numberOfCartItems}</span>
+      )}
     </button>
   );
 };
