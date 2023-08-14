@@ -44,10 +44,10 @@ const Cart = (props) => {
         <span>{totalAmount}원</span>
       </div>
       <div className={classes.actions}>
+        {hasItems && <PayRequest />}
         <button className={classes["button--alt"]} onClick={props.onClose}>
           닫기
         </button>
-        {hasItems && <PayRequest />}
       </div>
     </Modal>
   );

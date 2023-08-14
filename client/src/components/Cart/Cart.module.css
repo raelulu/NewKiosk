@@ -23,16 +23,16 @@
   font: inherit;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #420100;
+  border: 1px solid #6f756a;
   padding: 0.5rem 2rem;
-  border-radius: 15px;
-  margin-left: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.1rem;
 }
 
 .actions button:hover,
 .actions button:active {
-  background-color: #420100;
-  border-color: #420100;
+  background-color: #789a7f;
+  border-color: #789a7f;
   color: white;
 }
 
@@ -41,6 +41,6 @@
 }
 
 .actions .button {
-  background-color: #5a1a01;
+  background-color: #82b966;
   color: white;
 }
