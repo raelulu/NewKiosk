@@ -1,11 +1,5 @@
 const { Payment, Menu } = require("../model");
 
-// //admin 페이지
-// exports.admin = (req, res) => {
-//   console.log('admin 접속');
-//   res.send('dsadsa');
-// };
-
 // 메뉴 불러오기
 exports.getMenuList = (req, res) => {
   Menu.findAll()
@@ -30,7 +24,7 @@ exports.selectMenu = async (req, res) => {
   console.log("메뉴 조회 : ", req.body);
   await Menu.findOne({
     where: {
-      id: req.body.id,
+      name: req.body.name,
     },
   }).then((result) => {
     res.send(result);
@@ -41,7 +35,7 @@ exports.selectMenu = async (req, res) => {
 exports.menuUpdate = async (req, res) => {
   console.log("메뉴 수정 : ", req.body);
   await Menu.update(req.body, {
-    where: { id: req.body.id },
+    where: { name: req.body.name },
   }).then(() => {
     res.send(true);
   });
@@ -51,7 +45,7 @@ exports.menuUpdate = async (req, res) => {
 exports.menuDelete = async (req, res) => {
   console.log("메뉴 삭제 : ", req.body);
   await Menu.destroy({
-    where: { id: req.body.id },
+    where: { name: req.body.name },
   }).then(() => {
     res.send(true);
   });
@@ -72,7 +66,3 @@ exports.merchant_uid = async (req, res) => {
     res.send(result);
   });
 };
-
-// exports.merchant_uid = async (req, res) => {
-//   const { imp_uid, merchant_uid } = req.body;
-// };

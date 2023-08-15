@@ -4,7 +4,6 @@ import axios from "axios";
 import styled from "styled-components";
 
 export default function Admin() {
-  const Mindex = useRef();
   const Mid = useRef();
   const Mprice = useRef();
   const Mtext = useRef();
@@ -25,10 +24,9 @@ export default function Admin() {
   function addMenu() {
     axios
       .post(`${process.env.REACT_APP_SERVER_API}/addMenu`, {
-        index: Mindex.current.value,
-        id: Mid.current.value,
+        name: Mid.current.value,
         price: Mprice.current.value,
-        text: Mtext.current.value,
+        content: Mtext.current.value,
       })
       .then((response) => {
         if (response.data === true) {
@@ -45,17 +43,16 @@ export default function Admin() {
     console.log("조회 요청");
     axios
       .post(`${process.env.REACT_APP_SERVER_API}/selectMenu`, {
-        id: Mid.current.value,
+        name: Mid.current.value,
       })
       .then((response) => {
         if (response.data === undefined) {
           alert("데이터가 없습니다.");
         } else {
           console.log(response.data);
-          Mindex.current.value = response.data.menu_index;
-          Mid.current.value = response.data.menu_id;
-          Mprice.current.value = response.data.menu_price;
-          Mtext.current.value = response.data.menu_text;
+          Mid.current.value = response.data.name;
+          Mprice.current.value = response.price;
+          Mtext.current.value = response.content;
         }
       });
   }
@@ -65,10 +62,9 @@ export default function Admin() {
     console.log("수정 요청");
     axios
       .patch(`${process.env.REACT_APP_SERVER_API}/menuUpdate`, {
-        index: Mindex.current.value,
-        id: Mid.current.value,
+        name: Mid.current.value,
         price: Mprice.current.value,
-        text: Mtext.current.value,
+        content: Mtext.current.value,
       })
       .then((response) => {
         if (response.data === true) {
@@ -84,7 +80,7 @@ export default function Admin() {
     console.log("삭제 요청");
     axios
       .delete(`${process.env.REACT_APP_SERVER_API}/menuDelete`, {
-        data: { id: Mid.current.value },
+        data: { name: Mid.current.value },
       })
       .then((response) => {
         if (response.data === true) {
@@ -106,14 +102,8 @@ export default function Admin() {
         <form ref={form_info}>
           <StyledDiv>
             <StyledInput
-              ref={Mindex}
-              name="index"
-              type="text"
-              placeholder="메뉴 품목"
-            />
-            <StyledInput
               ref={Mid}
-              name="id"
+              name="name"
               type="text"
               placeholder="메뉴 이름"
             />
@@ -125,7 +115,7 @@ export default function Admin() {
             />
             <StyledInput
               ref={Mtext}
-              name="text"
+              name="content"
               type="text"
               placeholder="메뉴 설명"
             />
@@ -167,21 +157,22 @@ export default function Admin() {
         </form>
         <h2>DB MenuList</h2>
         <StyledTable>
-          <tr>
-            <StyledTh>종류</StyledTh>
-            <StyledTh>상품명</StyledTh>
-            <StyledTh>가격</StyledTh>
-            <StyledTh>설명</StyledTh>
-          </tr>
-
-          {menuList.map((menu) => (
-            <StyledTr>
-              <StyledTd>{menu.menu_index}</StyledTd>
-              <StyledTd>{menu.menu_id}</StyledTd>
-              <StyledTd>{menu.menu_price}</StyledTd>
-              <StyledTd>{menu.menu_text}</StyledTd>
-            </StyledTr>
-          ))}
+          <thead>
+            <tr>
+              <StyledTh>menu</StyledTh>
+              <StyledTh>price</StyledTh>
+              <StyledTh>description</StyledTh>
+            </tr>
+          </thead>
+          <tbody>
+            {menuList.map((menu, index) => (
+              <StyledTr key={index}>
+                <StyledTd>{menu.name}</StyledTd>
+                <StyledTd>{menu.price}</StyledTd>
+                <StyledTd>{menu.content}</StyledTd>
+              </StyledTr>
+            ))}
+          </tbody>
         </StyledTable>
       </StyledDiv>
     </>

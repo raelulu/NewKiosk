@@ -8,7 +8,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 //미들웨어로 cors 어떤 주소에서 요청을 보내도 에러가 뜨지 않는다.
-app.use(cors());
+// app.use(cors());/
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 app.use(express.static(path.join(__dirname, "../build")));
 // post 데이터 인식
