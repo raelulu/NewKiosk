@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import GlobalStyle from "../components/UI/GlobalStyle";
+import CoffeeLogo from "../assets/CoffeeLogo.png";
 
 const StyledDiv = styled.div`
   position: relative;
   width: 50%;
-  height: 30rem;
-  margin: 10rem auto;
+  margin: 1rem auto;
   border: none;
   background-color: white;
   display: flex;
@@ -37,13 +38,29 @@ const StyledButton = styled.button`
 
 const StyledH1 = styled.h1`
   margin: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+  // @media (min-width: 768px) {
+  //   display: block;
+  // }
+`;
+
+const StyledImg = styled.img`
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.5rem;
 `;
 
 export default function MainPage() {
   return (
     <>
+      <GlobalStyle />
+      <StyledH1>
+        COFFEE PLANT <StyledImg src={CoffeeLogo} alt="logo of cafe" />
+      </StyledH1>
+
       <StyledDiv>
-        <StyledH1>COFFEE PLANT</StyledH1>
         <Link to="/menu/:here">
           <StyledButton>매장</StyledButton>
         </Link>

@@ -10,7 +10,7 @@ const Header = (props) => {
       <GlobalStyle />
       <header className={classes.header}>
         <img className={classes.img} src={CoffeeLogo} alt="logo of cafe" />
-        <h1>COFFEE PLANT</h1>
+        <h1 className={classes.h1}>COFFEE PLANT</h1>
         <HeaderCartButton onClick={props.onShowCart} />
       </header>
     </>
