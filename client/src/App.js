@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Header from "./components/Layout/Header";
+import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Admin from "./components/admin/Admin";
 import MenuPage from "./pages/MenuPage";
 import MainPage from "./pages/MainPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/menu/:order" element={<MenuPage />} />
         <Route path="/" element={<MainPage />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </>
   );
