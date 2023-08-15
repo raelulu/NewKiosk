@@ -34,7 +34,7 @@ export default function PayRequest() {
       const { success, error_msg } = response;
       if (success) {
         axios
-          .post("http://localhost:3001/merchant_uid", {
+          .post(`${process.env.REACT_APP_SERVER_API}/merchant_uid`, {
             merchant_uid: `mid_${new Date().getTime()}`,
             amount: totalAmount,
           })

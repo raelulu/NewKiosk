@@ -20,6 +20,7 @@ const Cart = (props) => {
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
+  console.log(cartCtx.items);
 
   const cartItems = (
     <ul className={classes["cart-items"]}>

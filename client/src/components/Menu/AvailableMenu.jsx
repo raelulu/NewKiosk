@@ -12,15 +12,13 @@ const AvailableMenu = () => {
   // 메뉴 DB 조회 출력 컴포넌트
   useEffect(() => {
     axios
-      .get("http://49.50.172.207:3001/getMenuList")
+      .get(`${process.env.REACT_APP_SERVER_API}/getMenuList`)
       .then((response) => {
         setMenuList(response.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  // id = 품목
-  // name = 상품명 ex. 커피, 논커피
   return (
     <section className={classes.menuu}>
       {menuList.length !== 0 && (
@@ -29,10 +27,10 @@ const AvailableMenu = () => {
             {menuList.map((menu, index) => (
               <MenuItem
                 key={index}
-                id={menu.menu_index}
-                name={menu.menu_id}
-                price={menu.menu_price}
-                description={menu.menu_text}
+                id={menu.id}
+                name={menu.name}
+                price={menu.price}
+                description={menu.content}
               />
             ))}
           </ul>

@@ -1,26 +1,28 @@
 const Menu = (Sequelize, DataTypes) => {
   return Sequelize.define(
-    'menu',
+    "menu",
     {
-      menu_id: {
-        type: DataTypes.STRING(15),
+      id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
       },
-      menu_index: {
-        type: DataTypes.STRING(15),
+      name: {
+        type: DataTypes.STRING(20),
+        allowNull: false,
+        uniqueKey: true,
+      },
+      price: {
+        type: DataTypes.STRING(5),
         allowNull: false,
       },
-      menu_price: {
-        type: DataTypes.STRING(15),
-        allowNull: false,
-      },
-      menu_text: {
+      content: {
         type: DataTypes.STRING(50),
+        allowNull: false,
       },
     },
     {
-      tableName: 'menu',
+      tableName: "menu",
       freezeTableName: true,
       timestamps: false,
     }

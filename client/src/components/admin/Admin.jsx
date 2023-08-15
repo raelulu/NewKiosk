@@ -14,18 +14,17 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://49.50.172.207:3001/getMenuList")
+      .get(`${process.env.REACT_APP_SERVER_API}/getMenuList`)
       .then((response) => {
         setMenuList(response.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  //'http://49.50.172.207:3001/addMenu'// http://localhost:3001/addMenu
   // 메뉴 추가
   function addMenu() {
     axios
-      .post("http://49.50.172.207:3001/addMenu", {
+      .post(`${process.env.REACT_APP_SERVER_API}/addMenu`, {
         index: Mindex.current.value,
         id: Mid.current.value,
         price: Mprice.current.value,
@@ -40,13 +39,12 @@ export default function Admin() {
         }
       });
   }
-  //'http://localhost:3001/selectMenu'
-  // 로컬 url > 서버 요청 url로 변경
+
   // 메뉴 조회
   function SelectMenu() {
     console.log("조회 요청");
     axios
-      .post("http://49.50.172.207:3001/selectMenu", {
+      .post(`${process.env.REACT_APP_SERVER_API}/selectMenu`, {
         id: Mid.current.value,
       })
       .then((response) => {
@@ -66,7 +64,7 @@ export default function Admin() {
   function menuUpdate() {
     console.log("수정 요청");
     axios
-      .patch("http://49.50.172.207:3001/menuUpdate", {
+      .patch(`${process.env.REACT_APP_SERVER_API}/menuUpdate`, {
         index: Mindex.current.value,
         id: Mid.current.value,
         price: Mprice.current.value,
@@ -85,7 +83,7 @@ export default function Admin() {
   function menuDelete() {
     console.log("삭제 요청");
     axios
-      .delete("http://49.50.172.207:3001/menuDelete", {
+      .delete(`${process.env.REACT_APP_SERVER_API}/menuDelete`, {
         data: { id: Mid.current.value },
       })
       .then((response) => {

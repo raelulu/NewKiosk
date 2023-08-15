@@ -1,7 +1,4 @@
-const { Menu } = require("../model/IndexMenu");
-
-// const { Payment } = require('../model/IndexMenu');
-const { Payment } = require("../model/IndexMenu");
+const { Payment, Menu } = require("../model");
 
 // //admin 페이지
 // exports.admin = (req, res) => {
@@ -11,7 +8,6 @@ const { Payment } = require("../model/IndexMenu");
 
 // 메뉴 불러오기
 exports.getMenuList = (req, res) => {
-  console.log("메뉴 List 불러오기");
   Menu.findAll()
     .then((result) => {
       res.send(result);
@@ -24,13 +20,7 @@ exports.getMenuList = (req, res) => {
 // 메뉴 추가
 exports.addMenu = async (req, res) => {
   console.log("메뉴 추가 요청 : ", req.body);
-  let data = {
-    menu_id: req.body.id,
-    menu_index: req.body.index,
-    menu_price: req.body.price,
-    menu_text: req.body.text,
-  };
-  await Menu.create(data).then((result) => {
+  await Menu.create(req.body).then(() => {
     res.send(true);
   });
 };
@@ -40,10 +30,9 @@ exports.selectMenu = async (req, res) => {
   console.log("메뉴 조회 : ", req.body);
   await Menu.findOne({
     where: {
-      menu_id: req.body.id,
+      id: req.body.id,
     },
   }).then((result) => {
-    console.log(result);
     res.send(result);
   });
 };
@@ -51,18 +40,10 @@ exports.selectMenu = async (req, res) => {
 // 메뉴 수정
 exports.menuUpdate = async (req, res) => {
   console.log("메뉴 수정 : ", req.body);
-  await Menu.update(
-    {
-      menu_index: req.body.index,
-      menu_price: req.body.price,
-      menu_text: req.body.text,
-    },
-    {
-      where: { menu_id: req.body.id },
-    }
-  ).then((result) => {
-    console.log(result);
-    res.send("true");
+  await Menu.update(req.body, {
+    where: { id: req.body.id },
+  }).then(() => {
+    res.send(true);
   });
 };
 
@@ -70,7 +51,7 @@ exports.menuUpdate = async (req, res) => {
 exports.menuDelete = async (req, res) => {
   console.log("메뉴 삭제 : ", req.body);
   await Menu.destroy({
-    where: { menu_id: req.body.id },
+    where: { id: req.body.id },
   }).then(() => {
     res.send(true);
   });
