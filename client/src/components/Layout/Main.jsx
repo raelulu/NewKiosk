@@ -1,15 +1,20 @@
 import React, { Fragment } from "react";
 import MenuSummary from "../Menu/MenuSummary";
-import classes from "./Main.module.css";
 import GlobalStyle from "../UI/GlobalStyle";
+import styled from "styled-components";
+import backgroundImage from "../../assets/back.jpg";
 
+const MainContainer = styled.div`
+  background-image: url(${backgroundImage});
+  background-size: cover;
+`;
 const Main = () => {
   return (
     <>
       <GlobalStyle />
-      <div className={classes["background-image"]}>
+      <MainContainer>
         <MenuSummary />
-      </div>
+      </MainContainer>
     </>
   );
 };

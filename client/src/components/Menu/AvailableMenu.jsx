@@ -22,7 +22,7 @@ const AvailableMenu = () => {
   return (
     <section className={classes.menuu}>
       {menuList.length !== 0 && (
-        <Card>
+        <Card style={{ height: "500px" }}>
           <ul>
             {menuList.map((menu, index) => (
               <MenuItem

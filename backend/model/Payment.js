@@ -16,6 +16,10 @@ const Payment = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(10),
         allowNull: false,
       },
+      buyer_name: {
+        type: DataTypes.STRING(3),
+        allowNull: false,
+      },
     },
     {
       tableName: "payment",

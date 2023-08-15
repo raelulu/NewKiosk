@@ -19,9 +19,7 @@ export default function MenuPage() {
       <CartProvider>
         {cartIsShown && <Cart onClose={hideCartHandler} />}
         <Header onShowCart={showCartHandler} />
-        <main>
-          <Main />
-        </main>
+        <Main />
       </CartProvider>
     </>
   );

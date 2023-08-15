@@ -1,8 +1,7 @@
 .menuu {
   max-width: 70rem;
-  width: 90%;
-  margin: 1rem auto;
   animation: meals-appear 1s ease-out forwards;
+  padding: 15% 0;
 }
 
 .menuu ul {

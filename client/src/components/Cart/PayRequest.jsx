@@ -18,34 +18,37 @@ export default function PayRequest() {
 
   const cartCtx = useContext(CartContext);
   const totalAmount = `${cartCtx.totalAmount}`;
+  const randomName = Math.floor(Math.random() * 899) + 100;
 
   function onClickPayment() {
     const { IMP } = window;
-    IMP.init("imp37316783"); // 결제 데이터 정의
-    const data = {
-      pg: "html5_inicis", // PG사 (필수항목)
-      pay_method: "card", // 결제수단 (필수항목)
-      merchant_uid: totalAmount, // 결제금액 (필수항목)
-      name: "결제 테스트", // 주문명 (필수항목)
-      amount: totalAmount, // 금액 (필수항목)
+    IMP.init(`${process.env.REACT_APP_IMP}`); // 결제 데이터 정의
+    const requestPayData = {
+      pg: "html5_inicis",
+      pay_method: "card",
+      merchant_uid: new Date().getTime(),
+      name: "음료 결제",
+      amount: totalAmount,
+      buyer_email: "",
+      buyer_name: randomName,
     };
 
-    const callback = (response) => {
-      const { success, error_msg } = response;
+    const callback = async (response) => {
+      const { success, error_msg, merchant_uid, paid_amount, buyer_name } =
+        response;
       if (success) {
-        axios
-          .post(`${process.env.REACT_APP_SERVER_API}/merchant_uid`, {
-            merchant_uid: `mid_${new Date().getTime()}`,
-            amount: totalAmount,
-          })
-          .then(() => {
-            alert("결제 성공");
-          });
+        await axios.post(`${process.env.REACT_APP_SERVER_API}/merchant_uid`, {
+          merchant_uid: `mid_${merchant_uid}`,
+          amount: paid_amount,
+          buyer_name,
+        });
+        alert(`주문 번호: ${buyer_name}`);
       } else {
         alert(`결제 실패 : ${error_msg}`);
       }
     };
-    IMP.request_pay(data, callback);
+
+    IMP.request_pay(requestPayData, callback);
   }
 
   return (
