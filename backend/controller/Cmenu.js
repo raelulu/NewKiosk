@@ -21,10 +21,9 @@ exports.addMenu = async (req, res) => {
 
 // 메뉴 조회
 exports.selectMenu = async (req, res) => {
-  console.log("메뉴 조회 : ", req.body);
   await Menu.findOne({
     where: {
-      name: req.body.name,
+      name: req.params.name,
     },
   }).then((result) => {
     res.send(result);

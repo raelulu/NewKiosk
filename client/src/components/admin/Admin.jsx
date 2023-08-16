@@ -18,48 +18,49 @@ export default function Admin() {
         setMenuList(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [state]);
 
   // 메뉴 추가
   function addMenu() {
     axios
-      .post(`${process.env.REACT_APP_SERVER_API}/addMenu`, {
-        name: Mid.current.value,
-        price: Mprice.current.value,
-        content: Mtext.current.value,
-      })
+      .post(
+        `${process.env.REACT_APP_SERVER_API}/addMenu`,
+        {
+          name: Mid.current.value,
+          price: Mprice.current.value,
+          content: Mtext.current.value,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) => {
         if (response.data === true) {
           updateState(!state);
           alert("데이터 추가 성공");
         } else {
-          alert("데이터 추가 실패, 뭐가 잘못됬나 알아보기");
+          alert("데이터 추가 실패");
         }
       });
   }
 
   // 메뉴 조회
   function SelectMenu() {
-    console.log("조회 요청");
     axios
-      .post(`${process.env.REACT_APP_SERVER_API}/selectMenu`, {
-        name: Mid.current.value,
-      })
+      .get(
+        `${process.env.REACT_APP_SERVER_API}/selectMenu/${Mid.current.value}`
+      )
       .then((response) => {
-        if (response.data === undefined) {
+        if (!response.data) {
           alert("데이터가 없습니다.");
         } else {
-          console.log(response.data);
-          Mid.current.value = response.data.name;
-          Mprice.current.value = response.price;
-          Mtext.current.value = response.content;
+          setMenuList([response.data]);
         }
       });
   }
 
   // 메뉴 수정
   function menuUpdate() {
-    console.log("수정 요청");
     axios
       .patch(`${process.env.REACT_APP_SERVER_API}/menuUpdate`, {
         name: Mid.current.value,
@@ -75,6 +76,7 @@ export default function Admin() {
         }
       });
   }
+
   // 메뉴 삭제
   function menuDelete() {
     console.log("삭제 요청");
@@ -98,7 +100,6 @@ export default function Admin() {
       <br />
       <StyledDiv>
         <h1>관리자 페이지</h1>
-        <p>사용 메뉴얼 : 메뉴 조회 후 수정, 삭제 가능 * 아이디는 수정 안됨 </p>
         <form ref={form_info}>
           <StyledDiv>
             <StyledInput
@@ -203,7 +204,7 @@ const StyledBtn = styled.button`
   border-radius: 5px;
   &:hover {
     border: none;
-    background-color: #592793;
+    background-color: #82b966;
     color: #e6e6e6;
     scale: calc(1.2);
   }
