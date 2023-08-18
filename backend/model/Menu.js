@@ -4,7 +4,7 @@ const Menu = (Sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         primaryKey: true,
       },
       name: {

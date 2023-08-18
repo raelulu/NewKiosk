@@ -52,6 +52,10 @@ const StyledImg = styled.img`
   margin-left: 0.5rem;
 `;
 
+const StyledLink = styled(Link)`
+  margin-left: 70%;
+`;
+
 export default function MainPage() {
   return (
     <>
@@ -68,6 +72,7 @@ export default function MainPage() {
           <StyledButton>포장</StyledButton>
         </Link>
       </StyledDiv>
+      <StyledLink to="/AdminLogin">내 사이트</StyledLink>
     </>
   );
 }
