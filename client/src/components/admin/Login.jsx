@@ -2,11 +2,24 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+const StyledForm = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+`;
+
 const StyledInput = styled.input`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 20px;
   margin-right: 10px;
   border: 1px #dadada solid;
+  margin-bottom: 2px;
 `;
 
 const StyledBtn = styled.button`
@@ -17,7 +30,7 @@ const StyledBtn = styled.button`
   margin-bottom: 20px;
   border: 1px #dadada solid;
   border-radius: 2px;
-  padding: 5px;
+  padding: 4px 15px;
   font-size: 10pt;
   &:hover {
     border: 1px #c6c6c6 solid;
@@ -61,13 +74,13 @@ export default function AdminLogin() {
   return (
     <>
       <div>
-        <form>
+        <StyledForm>
           <h2>관리자 로그인</h2>
           <div>
-            <label htmlFor="input_id">ID : </label>
+            {/* <label>Id</label> */}
             <StyledInput
               type="text"
-              value="inputId"
+              value={inputId}
               name="input_id"
               placeholder="아이디"
               required="required"
@@ -75,10 +88,10 @@ export default function AdminLogin() {
             />
           </div>
           <div>
-            <label htmlFor="input_pw">PW : </label>
+            {/* <label>Password</label> */}
             <StyledInput
               type="password"
-              value="inputId"
+              value={inputId}
               name="input_pw"
               placeholder="비밀번호"
               required="required"
@@ -86,11 +99,11 @@ export default function AdminLogin() {
             />
           </div>
           <div>
-            <StyledBtn type="button" onClick={onClickLogin}>
+            <StyledBtn type="submit" onClick={onClickLogin}>
               로그인
             </StyledBtn>
           </div>
-        </form>
+        </StyledForm>
       </div>
     </>
   );

@@ -13,7 +13,9 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_API}/getMenuList`)
+      .get(`${process.env.REACT_APP_SERVER_API}/getMenuList`, {
+        withCredentials: true,
+      })
       .then((response) => {
         setMenuList(response.data);
       })
