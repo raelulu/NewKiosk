@@ -40,7 +40,7 @@ const StyledBtn = styled.button`
   }
 `;
 
-export default function AdminLogin() {
+export default function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
 
@@ -77,7 +77,6 @@ export default function AdminLogin() {
         <StyledForm>
           <h2>관리자 로그인</h2>
           <div>
-            {/* <label>Id</label> */}
             <StyledInput
               type="text"
               value={inputId}
@@ -88,10 +87,9 @@ export default function AdminLogin() {
             />
           </div>
           <div>
-            {/* <label>Password</label> */}
             <StyledInput
               type="password"
-              value={inputId}
+              value={inputPw}
               name="input_pw"
               placeholder="비밀번호"
               required="required"
