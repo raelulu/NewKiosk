@@ -72,7 +72,7 @@ export default function MainPage() {
           <StyledButton>포장</StyledButton>
         </Link>
       </StyledDiv>
-      <StyledLink to="/AdminLogin">내 사이트</StyledLink>
+      <StyledLink to="/login">내 사이트</StyledLink>
     </>
   );
 }

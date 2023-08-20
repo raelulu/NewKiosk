@@ -16,5 +16,6 @@ db.Sequelize = Sequelize;
 
 db.Menu = require("./Menu")(sequelize, Sequelize);
 db.Payment = require("./Payment")(sequelize, Sequelize);
+db.User = require("./User")(sequelize, Sequelize);
 
 module.exports = db;

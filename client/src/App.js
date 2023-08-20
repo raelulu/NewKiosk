@@ -5,7 +5,7 @@ import Admin from "./components/admin/Admin";
 import MenuPage from "./pages/MenuPage";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
-import AdminLogin from "./components/admin/AdminLogin";
+import Login from "./components/admin/Login";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/menu/:order" element={<MenuPage />} />
         <Route path="/" element={<MainPage />} />
-        <Route path="/AdminLogin" element={<AdminLogin />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </>
