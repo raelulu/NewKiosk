@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -43,6 +43,7 @@ const StyledBtn = styled.button`
 export default function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
+  const [loginMessage, setLoginMessage] = useState("");
 
   const onIdHandler = (e) => {
     setInputId(e.target.value);
@@ -53,23 +54,27 @@ export default function Login() {
   };
 
   const onClickLogin = () => {
+    console.log("ID : ", inputId);
+    console.log("PW : ", inputPw);
     axios
-      .post(`${process.env.REACT_APP_SERVER_API}/onLogin`, null, {
-        params: {
-          user_id: inputId,
-          user_pw: inputPw,
-        },
+      .post(`${process.env.REACT_APP_SERVER_API}/onLogin`, {
+        user_id: inputId,
+        user_pw: inputPw,
       })
-      .then((res) => console.log(res))
-      .catch();
+      .then((res) => {
+        if (res.data === "Login successful") {
+          setLoginMessage("로그인 성공");
+          sessionStorage.setItem("user_id", inputId);
+          // 원하는 동작 수행 (예: 페이지 리디렉션)
+        } else {
+          setLoginMessage("아이디 또는 비밀번호가 일치하지 않습니다.");
+        }
+      })
+      .catch((error) => {
+        console.error("로그인 오류:", error);
+        setLoginMessage("로그인 중 오류가 발생했습니다.");
+      });
   };
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_API}/login`)
-      .then((res) => console.log(res.data))
-      .catch();
-  }, []);
 
   return (
     <>
@@ -97,10 +102,11 @@ export default function Login() {
             />
           </div>
           <div>
-            <StyledBtn type="submit" onClick={onClickLogin}>
+            <StyledBtn type="button" onClick={onClickLogin}>
               로그인
             </StyledBtn>
           </div>
+          <div>{loginMessage}</div>
         </StyledForm>
       </div>
     </>

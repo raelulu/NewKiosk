@@ -3,7 +3,6 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const PORT = 3001;
-const user_inform = require("./routes/user_inform");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -11,10 +10,9 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 app.use(express.static(path.join(__dirname, "../build")));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use("/user_inform", user_inform);
+app.use(express.json()); // 요청의 body를 파싱하기 위한 미들웨어
 
-const router = require("./routes/user_inform");
+const router = require("./routes/index");
 app.use("/", router);
 
 app.get("*", (req, res) => {

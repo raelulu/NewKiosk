@@ -1,6 +1,6 @@
 const User = (Sequelize, DataTypes) => {
   return Sequelize.define(
-    "user",
+    "User",
     {
       user_id: {
         type: DataTypes.STRING(10),
@@ -13,7 +13,7 @@ const User = (Sequelize, DataTypes) => {
       },
     },
     {
-      tableName: "user",
+      tableName: "user_table",
       freezeTableName: true,
       timestamps: false,
     }

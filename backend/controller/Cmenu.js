@@ -1,6 +1,4 @@
 const { Payment, Menu, User } = require("../model");
-const db = require("../config/db");
-const util = require("util");
 
 // 메뉴 불러오기
 exports.getMenuList = (req, res) => {
@@ -58,45 +56,24 @@ exports.merchant_uid = async (req, res) => {
   });
 };
 
-exports.onLogin = (req, res) => {
-  console.log(`= = = > req : ${util.inspect(req)}`);
-  const user_id = req.query.user_id;
-  const user_pw = req.query.user_pw;
-  const sql1 = "SELECT COUNT(*) AS result FROM user_inform WHERE user_id = ?";
-  db.query(sql1, user_id, (err, data) => {
-    if (!err) {
-      if (data[0].result < 1) {
-        res.send({ msg: "입력하신 id 가 일치하지 않습니다." });
-      } else {
-        const sql2 = `SELECT 
-                              CASE (SELECT COUNT(*) FROM user_inform WHERE user_id = ? AND user_pw = ?)
-                                  WHEN '0' THEN NULL
-                                  ELSE (SELECT user_id FROM user_inform WHERE user_id = ? AND user_pw = ?)
-                              END AS userId
-                              , CASE (SELECT COUNT(*) FROM user_inform WHERE user_id = ? AND user_pw = ?)
-                                  WHEN '0' THEN NULL
-                                  ELSE (SELECT user_pw FROM user_inform WHERE user_id = ? AND user_pw = ?)
-                              END AS userPw`;
-        const params = [
-          user_id,
-          user_pw,
-          user_id,
-          user_pw,
-          user_id,
-          user_pw,
-          user_id,
-          user_pw,
-        ];
-        db.query(sql2, params, (err, data) => {
-          if (!err) {
-            res.send(data[0]);
-          } else {
-            res.send(err);
-          }
-        });
-      }
-    } else {
-      res.send(err);
+exports.onLogin = async (req, res) => {
+  const { user_id, user_pw } = req.body;
+
+  try {
+    const user = await User.findOne({
+      where: {
+        user_id: user_id,
+        user_pw: user_pw,
+      },
+    });
+    console.log(user);
+    if (!user) {
+      // 유저가 없으면 401 Unauthorized 반환
+      return res.status(401).send("Invalid credentials");
     }
-  });
+    return res.send("Login successful");
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).send("An error occurred during login");
+  }
 };

@@ -12,9 +12,7 @@ const AvailableMenu = () => {
   // 메뉴 DB 조회 출력 컴포넌트
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_API}/getMenuList`, {
-        withCredentials: true,
-      })
+      .get(`${process.env.REACT_APP_SERVER_API}/getMenuList`)
       .then((response) => {
         setMenuList(response.data);
       })
