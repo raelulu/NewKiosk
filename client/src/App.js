@@ -6,12 +6,18 @@ import MenuPage from "./pages/MenuPage";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
 import Login from "./components/admin/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
+  const token = sessionStorage.getItem("Authorization");
+
   return (
     <>
       <Routes>
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={<PrivateRoute component={<Admin />} authenticated={token} />}
+        />
         <Route path="/menu/:order" element={<MenuPage />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
