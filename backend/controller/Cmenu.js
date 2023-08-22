@@ -58,7 +58,6 @@ exports.merchant_uid = async (req, res) => {
 
 exports.onLogin = async (req, res) => {
   const { user_id, user_pw } = req.body;
-
   try {
     const user = await User.findOne({
       where: {
@@ -66,10 +65,8 @@ exports.onLogin = async (req, res) => {
         user_pw: user_pw,
       },
     });
-    console.log(user);
     if (!user) {
-      // 유저가 없으면 401 Unauthorized 반환
-      return res.status(401).send("Invalid credentials");
+      return res.send("Login failure");
     }
     return res.send("Login successful");
   } catch (error) {

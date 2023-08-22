@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const StyledForm = styled.form`
   display: flex;
@@ -44,6 +45,7 @@ export default function Login() {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
+  const navigate = useNavigate();
 
   const onIdHandler = (e) => {
     setInputId(e.target.value);
@@ -54,8 +56,6 @@ export default function Login() {
   };
 
   const onClickLogin = () => {
-    console.log("ID : ", inputId);
-    console.log("PW : ", inputPw);
     axios
       .post(`${process.env.REACT_APP_SERVER_API}/onLogin`, {
         user_id: inputId,
@@ -65,7 +65,7 @@ export default function Login() {
         if (res.data === "Login successful") {
           setLoginMessage("로그인 성공");
           sessionStorage.setItem("user_id", inputId);
-          // 원하는 동작 수행 (예: 페이지 리디렉션)
+          navigate("/admin");
         } else {
           setLoginMessage("아이디 또는 비밀번호가 일치하지 않습니다.");
         }
