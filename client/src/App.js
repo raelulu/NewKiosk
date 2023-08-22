@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Admin from "./components/admin/Admin";
@@ -9,7 +9,10 @@ import Login from "./components/admin/Login";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  const token = sessionStorage.getItem("Authorization");
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    setToken(sessionStorage.getItem("user_id"));
+  }, []);
 
   return (
     <>
