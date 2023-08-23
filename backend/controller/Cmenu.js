@@ -74,3 +74,11 @@ exports.onLogin = async (req, res) => {
     res.status(500).send("An error occurred during login");
   }
 };
+
+exports.logout = async (req, res) => {
+  const { user_id } = req.body;
+  if (!user_id) {
+    return res.send("Logout successful");
+  }
+  return res.send("Logout failure");
+};

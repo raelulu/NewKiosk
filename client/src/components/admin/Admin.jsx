@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export default function Admin() {
   const Mid = useRef();
@@ -10,6 +11,18 @@ export default function Admin() {
   const form_info = useRef();
   const [state, updateState] = useState(false);
   const [menuList, setMenuList] = useState([]);
+  const navigate = useNavigate();
+
+  const onClickLogout = () => {
+    axios.get(`${process.env.REACT_APP_SERVER_API}/logout`).then((res) => {
+      if (res.data === "Logout successful") {
+        navigate("/login");
+        sessionStorage.removeItem("user_id");
+      } else {
+        alert("로그아웃 하는데 실패했습니다.");
+      }
+    });
+  };
 
   useEffect(() => {
     axios
@@ -104,6 +117,7 @@ export default function Admin() {
         <h1>관리자 페이지</h1>
         <form ref={form_info}>
           <StyledDiv>
+            <LogoutBtn onClick={onClickLogout}>로그아웃</LogoutBtn>
             <StyledInput
               ref={Mid}
               name="name"
@@ -187,6 +201,7 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 const StyledInput = styled.input`
   width: 100%;
   height: 20px;
@@ -194,47 +209,44 @@ const StyledInput = styled.input`
 `;
 const StyledBtn = styled.button`
   margin-top: 5px;
+  margin-right: 5px;
   margin-bottom: 20px;
   color: #d5dde5;
-  background: #1b1e24;
+  background: rgb(93, 93, 93);
   font-size: 15px;
   padding: 5px;
-  text-shadow: 0 1px 1px rgba(41, 41, 41, 0.1);
-  vertical-align: middle;
   cursor: pointer;
-  margin-right: 5px;
   border-radius: 5px;
   &:hover {
-    border: none;
-    background-color: #82b966;
-    color: #e6e6e6;
-    scale: calc(1.2);
+    background-color: rgb(116 116 116);
   }
 `;
 
+const LogoutBtn = styled.button`
+  cursor: pointer;
+  margin-bottom: 1rem;
+  margin-left: 77%;
+}
+`;
+
 const StyledTable = styled.table`
-  border-radius: 3px;
   border-collapse: collapse;
+  border: 1px #c1c3d1 solid;
   height: 300px;
-  margin: auto;
   max-width: 90vw;
   padding: 5px;
   width: 100%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  animation: float 5s infinite;
+  margin-bottom: 10rem;
 `;
 
 const StyledTh = styled.th`
   color: #d5dde5;
-  background: #1b1e24;
+  background: #5d5d5d;
   border-bottom: 3px solid #9ea7af;
-  border-right: 1px solid #343a45;
+  border-right: 1px solid #d5dde5;
   font-size: 20px;
   font-weight: 100;
   padding: 20px;
-  /* text-align: left; */
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  vertical-align: middle;
 `;
 
 const StyledTr = styled.tr`
@@ -242,16 +254,13 @@ const StyledTr = styled.tr`
   color: #070d29;
   font-size: 16px;
   font-weight: normal;
-  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 `;
 
 const StyledTd = styled.td`
   background: #ffffff;
   padding: 20px;
   text-align: left;
-  vertical-align: middle;
   font-weight: 300;
   font-size: 18px;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #c1c3d1;
 `;

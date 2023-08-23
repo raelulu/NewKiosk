@@ -9,5 +9,6 @@ router.patch("/menuUpdate", controllerMenu.menuUpdate);
 router.delete("/menuDelete", controllerMenu.menuDelete);
 router.post("/merchant_uid", controllerMenu.merchant_uid);
 router.post("/onLogin", controllerMenu.onLogin);
+router.get("/logout", controllerMenu.logout);
 
 module.exports = router;

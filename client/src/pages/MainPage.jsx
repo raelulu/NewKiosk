@@ -41,9 +41,6 @@ const StyledH1 = styled.h1`
   display: flex;
   justify-content: center;
   margin-top: 20%;
-  // @media (min-width: 768px) {
-  //   display: block;
-  // }
 `;
 
 const StyledImg = styled.img`

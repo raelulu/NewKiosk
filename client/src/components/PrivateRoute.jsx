@@ -5,6 +5,6 @@ export default function PrivateRoute({ authenticated, component: Component }) {
   return authenticated === "kiosk123" ? (
     Component
   ) : (
-    <Navigate to="/admin" {...alert("로그인이 필요합니다.")}></Navigate>
+    <Navigate to="/login" {...alert("로그인이 필요합니다.")}></Navigate>
   );
 }
