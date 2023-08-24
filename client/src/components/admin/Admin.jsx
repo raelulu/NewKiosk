@@ -4,7 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-export default function Admin() {
+export default function Admin(props) {
   const Mid = useRef();
   const Mprice = useRef();
   const Mtext = useRef();
@@ -14,10 +14,11 @@ export default function Admin() {
   const navigate = useNavigate();
 
   const onClickLogout = () => {
-    axios.get(`${process.env.REACT_APP_SERVER_API}/logout`).then((res) => {
+    axios.post(`${process.env.REACT_APP_SERVER_API}/logout`).then((res) => {
       if (res.data === "Logout successful") {
         navigate("/login");
-        sessionStorage.removeItem("user_id");
+        props.setToken("");
+        sessionStorage.clear();
       } else {
         alert("로그아웃 하는데 실패했습니다.");
       }

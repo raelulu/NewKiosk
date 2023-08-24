@@ -41,7 +41,7 @@ const StyledBtn = styled.button`
   }
 `;
 
-export default function Login() {
+export default function Login(props) {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   const [loginMessage, setLoginMessage] = useState("");
@@ -65,6 +65,7 @@ export default function Login() {
         if (res.data === "Login successful") {
           setLoginMessage("로그인 성공");
           sessionStorage.setItem("user_id", inputId);
+          props.setToken(inputId);
           navigate("/admin");
         } else {
           setLoginMessage("아이디 또는 비밀번호가 일치하지 않습니다.");

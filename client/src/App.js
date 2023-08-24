@@ -10,21 +10,37 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [token, setToken] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    setToken(sessionStorage.getItem("user_id"));
-  }, []);
+    setIsLoading(false);
+    const getSessionUserId = sessionStorage.getItem("user_id");
+    setToken(getSessionUserId === null ? "" : getSessionUserId);
+    setIsLoading(true);
+  }, [token]);
 
   return (
     <>
       <Routes>
-        <Route
-          path="/admin"
-          element={<PrivateRoute component={<Admin />} authenticated={token} />}
-        />
-        <Route path="/menu/:order" element={<MenuPage />} />
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<NotFound />} />
+        {isLoading ? (
+          <>
+            <Route path="/login" element={<Login setToken={setToken} />} />
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute
+                  component={<Admin setToken={setToken} />}
+                  authenticated={token}
+                />
+              }
+            />
+            <Route path="/menu/:order" element={<MenuPage />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/*" element={<NotFound />} />
+          </>
+        ) : (
+          <Route path="/*" element={<div>Loading</div>} />
+        )}
       </Routes>
     </>
   );
