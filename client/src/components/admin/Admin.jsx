@@ -116,63 +116,67 @@ export default function Admin(props) {
       <br />
       <StyledDiv>
         <h1>관리자 페이지</h1>
-        <form ref={form_info}>
-          <StyledDiv>
-            <LogoutBtn onClick={onClickLogout}>로그아웃</LogoutBtn>
-            <StyledInput
-              ref={Mid}
-              name="name"
-              type="text"
-              placeholder="메뉴 이름"
-            />
-            <StyledInput
-              ref={Mprice}
-              name="price"
-              type="text"
-              placeholder="메뉴 가격"
-            />
-            <StyledInput
-              ref={Mtext}
-              name="content"
-              type="text"
-              placeholder="메뉴 설명"
-            />
-          </StyledDiv>
+        <StyledDiv>
+          <LogoutBtn onClick={onClickLogout}>로그아웃</LogoutBtn>
 
-          <br />
-          <StyledBtn
-            type="button"
-            onClick={() => {
-              addMenu();
-            }}
-          >
-            메뉴 추가
-          </StyledBtn>
-          <StyledBtn
-            type="button"
-            onClick={() => {
-              SelectMenu();
-            }}
-          >
-            메뉴 조회
-          </StyledBtn>
-          <StyledBtn
-            type="button"
-            onClick={() => {
-              menuUpdate();
-            }}
-          >
-            메뉴 수정
-          </StyledBtn>
-          <StyledBtn
-            type="button"
-            onClick={() => {
-              menuDelete();
-            }}
-          >
-            메뉴 삭제
-          </StyledBtn>
-        </form>
+          <form ref={form_info}>
+            <StyledDiv>
+              <StyledInput
+                ref={Mid}
+                name="name"
+                type="text"
+                placeholder="메뉴 이름"
+              />
+              <StyledInput
+                ref={Mprice}
+                name="price"
+                type="text"
+                placeholder="메뉴 가격"
+              />
+              <StyledInput
+                ref={Mtext}
+                name="content"
+                type="text"
+                placeholder="메뉴 설명"
+              />
+            </StyledDiv>
+
+            <br />
+            <StyledBtn
+              type="button"
+              onClick={() => {
+                addMenu();
+              }}
+            >
+              메뉴 추가
+            </StyledBtn>
+            <StyledBtn
+              type="button"
+              onClick={() => {
+                SelectMenu();
+              }}
+            >
+              메뉴 조회
+            </StyledBtn>
+            <StyledBtn
+              type="button"
+              onClick={() => {
+                menuUpdate();
+              }}
+            >
+              메뉴 수정
+            </StyledBtn>
+            <StyledBtn
+              type="button"
+              onClick={() => {
+                menuDelete();
+              }}
+            >
+              메뉴 삭제
+            </StyledBtn>
+          </form>
+        </StyledDiv>
+
         <h2>DB MenuList</h2>
         <StyledTable>
           <thead>
@@ -226,7 +230,7 @@ const StyledBtn = styled.button`
 const LogoutBtn = styled.button`
   cursor: pointer;
   margin-bottom: 1rem;
-  margin-left: 77%;
+  margin-left: 78%
 }
 `;
 

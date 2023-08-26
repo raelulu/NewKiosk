@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CoffeeLogo from "../../assets/CoffeeLogo.png";
+import GlobalStyle from "../../components/UI/GlobalStyle";
 
 const StyledForm = styled.form`
   display: flex;
@@ -10,6 +12,8 @@ const StyledForm = styled.form`
   flex-direction: column;
   width: 100%;
   height: 80vh;
+  // margin-top: 1.5rem;
+  // margin-left: -0.5rem;
 `;
 
 const StyledInput = styled.input`
@@ -39,6 +43,20 @@ const StyledBtn = styled.button`
     color: #333333;
     background: #f7f7f7;
   }
+`;
+
+const StyledH1 = styled.h1`
+  display: flex;
+  justify-content: center;
+  margin-left: -1rem;
+  margin-bottom: 1rem;
+`;
+
+const StyledImg = styled.img`
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 `;
 
 export default function Login(props) {
@@ -79,8 +97,16 @@ export default function Login(props) {
 
   return (
     <>
+      <GlobalStyle />
       <div>
         <StyledForm>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <StyledH1>
+              <StyledImg src={CoffeeLogo} alt="logo of cafe" />
+              COFFEE PLANT
+            </StyledH1>
+          </Link>
+
           <h2>관리자 로그인</h2>
           <div>
             <StyledInput

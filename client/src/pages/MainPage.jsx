@@ -37,16 +37,17 @@ const StyledButton = styled.button`
 `;
 
 const StyledH1 = styled.h1`
-  margin: 2rem;
   display: flex;
   justify-content: center;
-  margin-top: 20%;
+  margin-top: 13.5rem;
+  margin-left: -1rem;
 `;
 
 const StyledImg = styled.img`
   width: 2.5rem;
   height: 2.5rem;
   margin-left: 0.5rem;
+  margin-right: 0.5rem;
 `;
 
 const StyledLink = styled(Link)`
@@ -57,9 +58,12 @@ export default function MainPage() {
   return (
     <>
       <GlobalStyle />
-      <StyledH1>
-        COFFEE PLANT <StyledImg src={CoffeeLogo} alt="logo of cafe" />
-      </StyledH1>
+      <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+        <StyledH1>
+          <StyledImg src={CoffeeLogo} alt="logo of cafe" />
+          COFFEE PLANT
+        </StyledH1>
+      </Link>
 
       <StyledDiv>
         <Link to="/menu/:here">
@@ -69,7 +73,7 @@ export default function MainPage() {
           <StyledButton>포장</StyledButton>
         </Link>
       </StyledDiv>
-      <StyledLink to="/login">내 사이트</StyledLink>
+      <StyledLink to="/login">관리자 로그인</StyledLink>
     </>
   );
 }
