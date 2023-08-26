@@ -16,7 +16,7 @@ export default function Admin(props) {
   const onClickLogout = () => {
     axios.post(`${process.env.REACT_APP_SERVER_API}/logout`).then((res) => {
       if (res.data === "Logout successful") {
-        navigate("/login");
+        navigate("/");
         props.setToken("");
         sessionStorage.clear();
       } else {
