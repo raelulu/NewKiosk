@@ -2,11 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const app = express();
-const PORT = 3001;
+const PORT = 8800;
 const dotenv = require("dotenv");
 dotenv.config();
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "http:// 13.124.235.1:5000" }));
 
 app.use(express.static(path.join(__dirname, "../build")));
 app.use(express.urlencoded({ extended: true }));
