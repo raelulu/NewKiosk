@@ -1,10 +1,7 @@
 # NewKiosk
 <div align="center">
-  
-리액트 토이 프로젝트의 리팩토링 <br/> <br/> 
-포트원(아임포트) API 이용한 간편 결제 서비스 프로젝트입니다.
 
-
+  React, 결제모듈을 사용하여 만든 간편 주문 결제 시스템 토이프로젝트
 
 ![image](https://github.com/raelulu/NewKiosk/assets/115077413/e24a09f3-946e-446b-8b9e-d63c808a371a)
 
@@ -22,3 +19,4 @@
 
 
 </div>
+
