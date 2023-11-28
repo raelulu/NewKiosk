@@ -1,7 +1,13 @@
-# NewKiosk
-<div align="center">
+<h1> COFFEEPLANT </h1>
+<h4>  React, 결제모듈을 사용하여 만든 간편 주문 결제 시스템 토이프로젝트</h4>
+🗓️ 진행 기간 : 2023.08.14 ~ 2023.08.20 <br />
+👩‍🌾 진행 인원 : 1명 <br />
+🪴사이트 :  <a href="http://13.124.235.1:5000"> COFFEEPLANT </a> <br /> <br />
 
-  React, 결제모듈을 사용하여 만든 간편 주문 결제 시스템 토이프로젝트
+🔨 Stack 🔨
+<div><img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=flat&logo=Sequelize&logoColor=white"/></div>
+
 
 ![image](https://github.com/raelulu/NewKiosk/assets/115077413/e24a09f3-946e-446b-8b9e-d63c808a371a)
 
@@ -19,4 +25,9 @@
 
 
 </div>
+
+
+
+
+
 
