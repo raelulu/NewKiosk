@@ -6,8 +6,14 @@
 
 🔨 Stack 🔨
 <div><img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=flat&logo=Sequelize&logoColor=white"/></div>
+  <img src="https://img.shields.io/badge/Sequelize-52B0E7?style=flat&logo=Sequelize&logoColor=white"/></div><br />
 
+
+🎥 Play 🎥
+
+<img src="https://github.com/raelulu/NewKiosk/assets/115077413/87e57167-ff7b-4288-a509-433602bcf3df.gif" width="760" height="500"/>
+
+👆로딩 시간이 다소 걸릴 수 있습니다. 잠시 기다려 주세요🙇‍♂️<br />
 
 ![image](https://github.com/raelulu/NewKiosk/assets/115077413/e24a09f3-946e-446b-8b9e-d63c808a371a)
 
